@@ -24,7 +24,6 @@ export class BooksController {
     return this.booksService.create(createBookDto);
   }
 
-  @UsePipes(TestPipe)
   @UseInterceptors(TestInterceptorInterceptor)
   @Get()
   findAll() {
@@ -32,6 +31,8 @@ export class BooksController {
     return this.booksService.findAll();
   }
 
+  @UseInterceptors(TestInterceptorInterceptor)
+  @UsePipes(TestPipe)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.booksService.findOne(+id);
